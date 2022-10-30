@@ -13,12 +13,14 @@ function playRound(p_1, p_2) {
 	const hand_1 = hands.get(p_1);
 	const losing_hand = (hand_1 + 1) % 3;
 	const hand_2 = hands.get(p_2);
-	let output = "You Win! " + formatted_p1 + " beats " + formatted_p2 + ".";
+	let output = "";
 	if (hand_1 === hand_2) {
 		output = "Tie! Both players drew " + formatted_p1 + ".";
 	} else if (losing_hand === hand_2) {
 		output = "You Lose! " + formatted_p2 + " beats " + formatted_p1 + ".";
-	}
+	} else {
+	let output = "You Win! " + formatted_p1 + " beats " + formatted_p2 + ".";
+	}	
 	return output;
 }
 
