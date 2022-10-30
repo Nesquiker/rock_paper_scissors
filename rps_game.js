@@ -1,4 +1,5 @@
-
+let wins = 0;
+let losses = 0;
 
 function playRound(p_1, p_2) {
 	const hands = new Map([
@@ -18,8 +19,10 @@ function playRound(p_1, p_2) {
 		output = "Tie! Both players drew " + formatted_p1 + ".";
 	} else if (losing_hand === hand_2) {
 		output = "You Lose! " + formatted_p2 + " beats " + formatted_p1 + ".";
+		losses++;
 	} else {
-	let output = "You Win! " + formatted_p1 + " beats " + formatted_p2 + ".";
+		output = "You Win! " + formatted_p1 + " beats " + formatted_p2 + ".";
+		wins++;
 	}	
 	return output;
 }
@@ -29,13 +32,24 @@ function compChoice() {
 	return hands[Math.floor(Math.random() * 3)];
 }
 
-function playerChoice() {
-	return prompt("Please enter your hand: rock / paper / scissors  | If none chosen a random choice will be made", compChoice());
+function game(e) {
+	let outcome = playRound(e.srcElement.className, compChoice());
+	const text_out = document.querySelector(".outcome");
+	if (wins === 5) {
+		text_out.textContent = "You are the champion! Congratulations!";
+		wins = 0;
+		losses = 0;
+	} else if (losses === 5) {
+		text_out.textContent = "You have been defeated!";
+		wins = 0;
+		losses = 0;
+	} else {
+		text_out.textContent = outcome + " You have won " + wins + " games and lost " + losses + " games.";
+	}	
 }
-	
 
-function game() {
-	for (let i = 0; i < 5; i++) {
-		console.log(playRound(playerChoice(), compChoice()));
-	}
-}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+	button.addEventListener('click', game);
+});

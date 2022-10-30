@@ -1,0 +1,40 @@
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: black;
+	height: 100vh;
+}
+
+h2 {
+	text-align: center;
+	color: white;
+	flex: auto;
+	
+}
+
+.buttons {
+	display: flex;
+	flex: auto;
+	justify-content: space-around;
+	align-items: center;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	background: black;
+	font-size: 45px;
+	color: white;
+	font-weight: bold;
+}
+
+.outcome {
+	color: white;
+	font-size: 45px;
+	font-weight: bold;
+	flex: auto;
+}
+	
